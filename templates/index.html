@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<title>Todo App</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<body>
+<style>
+    h1{
+    padding: 2%;
+    }
+    .title{
+    padding: 0.75%;
+    margin: 3%;
+    }
+    body{
+     background: rgb(22,247,192);
+background: linear-gradient(90deg, rgba(22,247,192,1) 0%, rgba(158,249,151,1) 100%);
+     }
+     @media (min-height: 320px) {
+  .ui.footer.form-page { /* Increased specificity for SO snippet priority */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align:center;
+  }
+}
+</style>
+<center><h1>Todo App</h1></center>
+<div class="ui container">
+<form action="/add" method="post">
+    <label for="title">To do list</label>
+    <input type="text" class="title" name="title" placeholder="Enter to-do"><br>
+    <button type="submit" class="ui green button">Add</button>
+</form>
+{% for todo in todo_list %}
+<div class="ui segment">
+    <p class="ui big header"> {{ todo.id }} ]  {{ todo.title }} </p>
+    {% if todo.complete==False %}
+    <span class="ui secondary basic button">Not complete</span>
+    {% else %}
+    <span class="ui green button">Completed</span>
+    {% endif %}
+<a class="ui inverted blue button" href="/update/{{ todo.id }}">Update</a>
+<a class="ui inverted red button" href="/delete/{{ todo.id }}">Delete</a>
+</div>
+{% endfor %}
+</div>
+<div class="ui inverted vertical footer segment form-page">
+  <div class="ui container">
+    <p>Made with ❤ by rakul. Copyrights © 2021 </p>
+  <p><a href="mailto:rakulcareer6@gmail.com">rakulcareer6@gmail.com</a></p>
+  </div>
+</div>
+</body>
+</html>
