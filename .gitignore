@@ -1,0 +1,6 @@
+.idea
+Pipfile
+Pipfile.lock
+requirements.txt
+runtime.txt
+wsgi.py
